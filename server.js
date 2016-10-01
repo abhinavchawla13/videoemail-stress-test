@@ -89,11 +89,22 @@ router.use(function(req, res, next) {
 //   });
 // };
 
-function checkVideoStatus(videoID){
-    console.log("Step 1");
+currentTestId = 0;
+randomTimeWait = 0;
+
+function randomInt (low, high) {
+    return Math.floor(Math.random() * (high - low) + low);
+}
+
+function checkVideoStatus(videoID, currentTestId){
+    console.log("Step 1", currentTestId);
+    randomTimeWait = randomInt(1, 20);
+    console.log("Step 1 alphaTime: ", randomTimeWait);
     setTimeout(function(){
-        console.log("Step 2");
-    }, 10000);
+        console.log("\nProcessed");
+        console.log("Wait Time: ", randomTimeWait);
+        console.log("ID: ", currentTestId);
+    }, randomTimeWait*1000);
 }
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
@@ -117,8 +128,8 @@ router.route('/stress-tester')
      videoID = req.body.videoid;
 
      console.log("video_id: ", videoID);
-
-     checkVideoStatus(videoID);
+     currentTestId++;
+     checkVideoStatus(videoID, currentTestId);
       // save the bear and check for errors
 
 
