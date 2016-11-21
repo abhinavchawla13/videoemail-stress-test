@@ -90,7 +90,7 @@ router.use(function(req, res, next) {
 // };
 
 currentTestId = 0;
-randomTimeWait = 0;
+randomTimeWait = 20;
 
 function randomInt (low, high) {
     return Math.floor(Math.random() * (high - low) + low);
@@ -98,7 +98,7 @@ function randomInt (low, high) {
 
 function checkVideoStatus(videoID, currentTestId){
     console.log("Step 1", currentTestId);
-    randomTimeWait = randomInt(1, 20);
+    // randomTimeWait = randomInt(1, 20);
     console.log("Step 1 alphaTime: ", randomTimeWait);
     setTimeout(function(){
         console.log("\nProcessed");
